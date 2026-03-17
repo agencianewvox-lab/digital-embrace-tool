@@ -9,7 +9,7 @@ export const CTASection = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
           <div className="relative z-10">
             <h2 className="mb-4 text-2xl font-bold md:text-3xl">
-              Esses números fazem sentido para a sua clínica?
+              Prontos para ativar esses números?
             </h2>
             <p className="mx-auto mb-8 max-w-xl text-muted-foreground">
               Se você quer estruturar sua aquisição de pacientes e transformar atendimento em faturamento previsível, fale com um especialista.
