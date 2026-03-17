@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 export const CTASection = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-8 md:py-12">
       <div className="container mx-auto max-w-4xl px-4">
         {/* CTA Block */}
         <div className="relative overflow-hidden rounded-2xl card-elevated p-8 text-center md:p-12 glow-primary-lg">
