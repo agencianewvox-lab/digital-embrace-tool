@@ -85,6 +85,7 @@ export const CalculatorSection = () => {
                 max={300}
                 step={1}
                 prefix="R$"
+                hint="R$20-40 é a média"
                 onChange={setCustoLead}
               />
               <CalculatorSlider
