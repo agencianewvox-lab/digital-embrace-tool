@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 
 interface CalculatorSliderProps {
   label: string;
@@ -24,22 +24,44 @@ export const CalculatorSlider = ({
   onChange,
 }: CalculatorSliderProps) => {
   const percentage = ((value - min) / (max - min)) * 100;
+  const [inputValue, setInputValue] = useState(value.toLocaleString("pt-BR"));
+  const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    if (!isFocused) {
+      setInputValue(value.toLocaleString("pt-BR"));
+    }
+  }, [value, isFocused]);
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const raw = e.target.value.replace(/\D/g, "");
-      const num = Number(raw);
-      if (num >= min && num <= max) onChange(num);
-      else if (num < min) onChange(min);
-      else if (num > max) onChange(max);
+      const raw = e.target.value;
+      setInputValue(raw);
+
+      const cleaned = raw.replace(/\./g, "").replace(",", ".");
+      const num = Number(cleaned);
+      if (!isNaN(num) && num >= min && num <= max) {
+        onChange(num);
+      }
     },
     [min, max, onChange]
   );
 
-  const formatDisplay = (val: number) => {
-    if (prefix === "R$") return val.toLocaleString("pt-BR");
-    return val.toLocaleString("pt-BR");
-  };
+  const handleBlur = useCallback(() => {
+    setIsFocused(false);
+    const cleaned = inputValue.replace(/\./g, "").replace(",", ".");
+    let num = Number(cleaned);
+    if (isNaN(num) || num < min) num = min;
+    if (num > max) num = max;
+    num = Math.round(num / step) * step;
+    onChange(num);
+    setInputValue(num.toLocaleString("pt-BR"));
+  }, [inputValue, min, max, step, onChange]);
+
+  const handleFocus = useCallback(() => {
+    setIsFocused(true);
+    setInputValue(value.toString());
+  }, [value]);
 
   return (
     <div className="space-y-3">
@@ -49,8 +71,11 @@ export const CalculatorSlider = ({
           {prefix && <span className="text-xs text-muted-foreground">{prefix}</span>}
           <input
             type="text"
-            value={formatDisplay(value)}
+            inputMode="numeric"
+            value={inputValue}
             onChange={handleInputChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             className="w-20 bg-transparent text-right text-sm font-semibold text-foreground outline-none font-display"
           />
           {suffix && <span className="text-xs text-muted-foreground">{suffix}</span>}
