@@ -1,26 +1,9 @@
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const CTASection = () => {
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto max-w-4xl px-4">
-        {/* Proof bullets */}
-        <div className="mb-12 grid gap-4 sm:grid-cols-3">
-          {[
-            "Entenda seus números com clareza",
-            "Descubra seus gargalos comerciais",
-            "Projete seu crescimento com previsibilidade",
-          ].map((text, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 rounded-xl card-elevated p-4"
-            >
-              <CheckCircle className="h-5 w-5 shrink-0 text-primary" />
-              <span className="text-sm font-medium text-foreground/80">{text}</span>
-            </div>
-          ))}
-        </div>
-
         {/* CTA Block */}
         <div className="relative overflow-hidden rounded-2xl card-elevated p-8 text-center md:p-12 glow-primary-lg">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
