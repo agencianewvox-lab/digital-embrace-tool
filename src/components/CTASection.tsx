@@ -2,14 +2,14 @@ import { ArrowRight } from "lucide-react";
 
 export const CTASection = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-8 md:py-12">
       <div className="container mx-auto max-w-4xl px-4">
         {/* CTA Block */}
         <div className="relative overflow-hidden rounded-2xl card-elevated p-8 text-center md:p-12 glow-primary-lg">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
           <div className="relative z-10">
             <h2 className="mb-4 text-2xl font-bold md:text-3xl">
-              Esses números fazem sentido para a sua clínica?
+              Prontos para ativar esses números?
             </h2>
             <p className="mx-auto mb-8 max-w-xl text-muted-foreground">
               Se você quer estruturar sua aquisição de pacientes e transformar atendimento em faturamento previsível, fale com um especialista.
