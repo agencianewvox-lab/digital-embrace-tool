@@ -1,4 +1,4 @@
-import logoNewvox from "@/assets/logo-newvox.jpg";
+import logoNewvox from "@/assets/logo-newvox.png";
 
 export const HeroSection = () => {
   return (
